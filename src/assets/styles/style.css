@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@200;400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  transition: all ease .2s;
+}
+
+body, button {
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+#root {
+  width: 100vw;
+  min-height: 100vh;
+}
