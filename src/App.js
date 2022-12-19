@@ -16,23 +16,13 @@ export default function App() {
     <BrowserRouter>
       <View>
         <Navbar />
-     {/*    <Routes>
-          <Route path='/' exact>
-            <Ranking />
-          </Route>
-          <Route path='/signin' exact>
-            <SignIn />
-          </Route>
-          <Route path='/signup' exact>
-            <SignUp />
-          </Route>
-          <Route path='/users/me' exact>
-            <MyLinks />
-          </Route>
-          <Route path='/ranking' exact>
-            <Ranking />
-          </Route>
-        </Routes> */}
+        <Routes>
+          <Route path='/' element={<Ranking />} />
+          {/* <Route path='/signin' element={<SignIn />} />
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='/users/me' element={<MyLinks />} />
+          <Route path='/ranking' element={<Ranking />} /> */}
+        </Routes>
       </View>
     </BrowserRouter>
   );

@@ -36,5 +36,10 @@ const Container = styled.nav`
     background-color: transparent;
     outline: none;
     border: none;
+
+    &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
   }
 `;
