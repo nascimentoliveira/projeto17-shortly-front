@@ -91,7 +91,7 @@ const Container = styled.section`
   height: 100%;
   max-width: 770px;
   padding: 15px;
-  margin-top: 150px;
+  margin-top: 5%;
 `;
 
 const Form = styled.form`
