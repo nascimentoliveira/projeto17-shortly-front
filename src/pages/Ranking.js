@@ -1,12 +1,9 @@
 import styled from 'styled-components';
 import { ImTrophy } from 'react-icons/im';
 
-import Logo from '../components/Logo.js';
-
 export default function Ranking() {
   return (
     <Container>
-        <Logo />
         <TitleFooter>
           <ImTrophy />
           Ranking
