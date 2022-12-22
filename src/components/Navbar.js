@@ -6,7 +6,7 @@ import { UserContext } from '../context/UserContext.js';
 
 export default function Navbar() {
 
-  const { user } = useContext(UserContext);
+  const { user, setUser, setToken } = useContext(UserContext);
 
   const location = useLocation();
 
@@ -28,7 +28,14 @@ export default function Navbar() {
                 Ranking
               </RankingButton>
             </Link>
-            <LogOutButton>Sair</LogOutButton>
+            <Link to='/signin'>
+              <LogOutButton onClick={() => {
+                setUser();
+                setToken();
+              }}>
+                Sair
+              </LogOutButton>
+            </Link>
           </div>
           :
           <div>
