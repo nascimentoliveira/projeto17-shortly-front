@@ -1,19 +1,56 @@
+import { useContext, useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
-import { useState } from 'react';
+import Swal from 'sweetalert2';
 
+import { UserContext } from '../context/UserContext.js';
+import { SHORTENED_LINKS_URL } from '../constants.js';
 import Spinner from '../components/Spinner.js';
 
-export default function NewShorten() {
+export default function NewShorten({ setRefresh }) {
 
+  const { user, token } = useContext(UserContext);
   const [formEnabled, setFormEnabled] = useState(true);
   const [form, setForm] = useState({ url: '' });
+  const [loading, setLoading] = useState(true);
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
 
   function handleForm(e) {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   }
 
-  function newShorten(e) {}
+  function newShorten(e) {
+    e.preventDefault();
+    setLoading(true);
+    axios.post(`${SHORTENED_LINKS_URL}/shorten`, form, config)
+      .then(res => {
+        setLoading(false);
+        setRefresh(Math.random());
+        setForm({ url: '' });
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      })
+      .catch(err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.response.data.message
+        });
+        setLoading(false);
+        setForm({ url: '' });
+      });
+  }
 
   return (
     <Container>

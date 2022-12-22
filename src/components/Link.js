@@ -1,14 +1,56 @@
 import styled from 'styled-components';
 import { FaTrashAlt } from 'react-icons/fa';
+import { useContext, useState } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
-export default function Link({ link }) {
+import { SHORTENED_LINKS_URL } from '../constants.js';
+import { UserContext } from '../context/UserContext.js';
+import Spinner from '../components/Spinner.js';
+
+export default function Link({ link, setRefresh }) {
+
+  const { user, token } = useContext(UserContext);
+  
+  const [loading, setLoading] = useState(true);
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+
+  function deleteLink(id) {
+    setLoading(true);
+    axios.delete(`${SHORTENED_LINKS_URL}/${id}`, config)
+      .then(res => {
+        setLoading(false);
+        setRefresh(Math.random());
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      })
+      .catch(err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.response.data.message
+        });
+        setLoading(false);
+      });
+  }
+
   return (
     <Container>
       <Item title={link.url}><p>{link.url}</p></Item>
       <Item><p>{link.shortUrl}</p></Item>
       <Item>{`Quantidade de visitantes: `+link.visitCount}</Item>
-      <DeleteShortLink>
-        <FaTrashAlt />
+      <DeleteShortLink onClick={() => deleteLink(link.id)}>
+        {loading ? <FaTrashAlt /> : <Spinner color='#EA4F4F'/>}
       </DeleteShortLink>
     </Container>
   );
@@ -57,6 +99,9 @@ const DeleteShortLink = styled.button`
   border-radius: 0px 12px 12px 0px;
   border: none;
   outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: 1s;
 
   svg {
@@ -70,7 +115,7 @@ const DeleteShortLink = styled.button`
   
     svg {
       transform: scale(1.2);
-      color: #e01b1b;
+      color: #E01B1B;
     }
   }
 `;

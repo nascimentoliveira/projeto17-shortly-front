@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
@@ -14,6 +15,8 @@ export default function MyLinks() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [links, setLinks] = useState([]);
+  const [refresh, setRefresh] = useState(0);
+  const navigate = useNavigate();
 
   const config = {
     headers: {
@@ -33,21 +36,24 @@ export default function MyLinks() {
           icon: 'error',
           title: 'Oops...',
           text: err.response.data.message
-        })
+        });
+        if (err.response.status === 404) {
+          navigate('/signin');
+        }
         setLoading(false);
         setError(true);
       });
-  }, []);
-
+  }, [refresh]);
 
   return (
     <Container>
-      <NewShorten />
+      <NewShorten setRefresh={setRefresh} />
       <Links>
         {links?.map(link =>
           <Link
             key={link.id}
             link={link}
+            setRefresh={setRefresh}
           />
         )}
       </Links>

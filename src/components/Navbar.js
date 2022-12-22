@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link,useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 
 import { UserContext } from '../context/UserContext.js';
@@ -9,7 +9,6 @@ export default function Navbar() {
   const { user } = useContext(UserContext);
 
   const location = useLocation();
-
 
   return (
     <Container>
