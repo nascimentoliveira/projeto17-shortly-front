@@ -7,6 +7,7 @@ const View = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 250px;
   cursor: default;
 `;
 

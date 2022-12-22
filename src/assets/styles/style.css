@@ -5,9 +5,14 @@
   transition: all ease .2s;
 }
 
-body, button {
+body, button, input {
   font-family: 'Lexend Deca', sans-serif;
 }
+
+input::placeholder {
+  font-family: 'Lexend Deca', sans-serif;
+}
+
 
 #root {
   width: 100vw;

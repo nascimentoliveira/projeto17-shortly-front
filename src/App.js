@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import Navbar from './components/Navbar.js';
 import View from './components/View.js';
@@ -19,11 +19,12 @@ export default function App() {
         <Navbar />
         <Logo />
         <Routes>
-          <Route path='/' element={<Ranking />} />
+          <Route index element={<Navigate replace to='/ranking' />} />
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/users/me' element={<MyLinks />} />
           <Route path='/ranking' element={<Ranking />} />
+          <Route path="*" element={<Ranking />} />
         </Routes>
       </View>
     </BrowserRouter>

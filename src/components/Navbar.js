@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Navbar() {
   return (
     <Container>
+      <Content>
       <div>
       </div>
       <div>
@@ -18,6 +19,7 @@ export default function Navbar() {
           </button>
         </Link>
       </div>
+      </Content>
     </Container>
   );
 }
@@ -25,12 +27,23 @@ export default function Navbar() {
 const Container = styled.nav`
   width: 100%;
   height: 90px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+`;
+
+const Content = styled.section`
+  width: 85%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
+  background-color: #FFFFFF;
+  margin: 0px auto;
 
   button {
     background-color: transparent;
@@ -38,8 +51,8 @@ const Container = styled.nav`
     border: none;
 
     &:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-  }
+      transform: scale(1.1);
+      cursor: pointer;
+    }
   }
 `;

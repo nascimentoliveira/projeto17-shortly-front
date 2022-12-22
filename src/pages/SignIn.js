@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ThreeDots } from 'react-loader-spinner';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+
+import Spinner from '../components/Spinner.js';
 
 export default function SignIn() {
   /* const { setUser, setToken } = useContext(DataContext); */
@@ -40,17 +41,6 @@ export default function SignIn() {
       }); */
   }
 
-  function spinner() {
-    return (
-      <ThreeDots
-        height='50'
-        width='50'
-        radius='4'
-        color='#73C800'
-      />
-    );
-  }
-
   return (
     <Container>
       <Form onSubmit={signIn}>
@@ -79,7 +69,7 @@ export default function SignIn() {
           title={formEnabled ? 'Fazer login' : 'aguarde...'}
           disabled={!formEnabled}
         >
-          {formEnabled ? 'Entrar' : spinner()}
+          {formEnabled ? 'Entrar' : <Spinner />}
         </Button>
       </Form>
     </Container>
@@ -106,7 +96,6 @@ const Input = styled.input`
   max-width: 769px;
   height: 60px;
   background-color: #FFFFFF;
-  font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
@@ -118,7 +107,6 @@ const Input = styled.input`
   padding: 0px 22px;
 
   &::placeholder {
-    font-family: 'Lexend Deca', sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
@@ -126,7 +114,6 @@ const Input = styled.input`
 
   &:focus {
     outline: none;
-    font-family: 'Lexend Deca', sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
