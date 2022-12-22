@@ -5,9 +5,11 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 import Spinner from '../components/Spinner.js';
+import { UserContext } from '../context/UserContext.js';
+import { SIGN_IN_URL } from '../constants.js';
 
 export default function SignIn() {
-  /* const { setUser, setToken } = useContext(DataContext); */
+  const { setUser, setToken } = useContext(UserContext);
   const [formEnabled, setFormEnabled] = useState(true);
   const [form, setForm] = useState({ email: '', password: '' });
   const navigate = useNavigate();
@@ -18,16 +20,15 @@ export default function SignIn() {
   }
 
   function signIn(e) {
-    /* e.preventDefault();
+    e.preventDefault();
     setFormEnabled(false);
-    axios.post('', form)
+    axios.post(SIGN_IN_URL, form)
       .then(res => {
-        setUser({ name: res.data.name, image: res.data.image });
+        setUser(res.data.name);
         setToken(res.data.token);
         navigate('/');
       })
       .catch(err => {
-        console.log(err)
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -38,7 +39,7 @@ export default function SignIn() {
           password: ''
         });
         setFormEnabled(true);
-      }); */
+      });
   }
 
   return (
@@ -143,6 +144,9 @@ const Button = styled.button`
   text-align: center;
   color: #FFFFFF;
   margin: 55px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     transform: scale(1.05);

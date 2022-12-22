@@ -5,6 +5,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 import Spinner from '../components/Spinner.js';
+import { SIGN_UP_URL } from '../constants.js';
 
 export default function SignUp() {
   /* const { setUser, setToken } = useContext(DataContext); */
@@ -23,30 +24,32 @@ export default function SignUp() {
   }
 
   function signUp(e) {
-    /* e.preventDefault();
+    e.preventDefault();
     setFormEnabled(false);
-
-    if (user) {
-      axios.post(SIGN_UP_URL, user)
-        .then((res) => {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: res.data.message,
-            showConfirmButton: false,
-            timer: 1500
-          })
-          navigate('/login');
+    axios.post(SIGN_UP_URL, form)
+      .then((res) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 1500
         })
-        .catch(err => {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: err.response.data.message
-          })
-          setFormEnabled(true);
+        navigate('/signin');
+      })
+      .catch(err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.response.data.message
+        })
+        setForm({
+          ...form,
+          password: '',
+          confirmPassword: ''
         });
-    } */
+        setFormEnabled(true);
+      });
   }
 
   return (
@@ -161,7 +164,7 @@ const Input = styled.input`
 const Button = styled.button`
   width: 182px;
   height: 60px;
-  background: #5D9040;
+  background-color: #5D9040;
   border-radius: 12px;
   border: none;
   outline: none;
@@ -171,6 +174,9 @@ const Button = styled.button`
   text-align: center;
   color: #FFFFFF;
   margin: 55px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     transform: scale(1.05);

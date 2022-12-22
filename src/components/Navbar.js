@@ -1,26 +1,52 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
+import { useContext } from 'react';
+
+import { UserContext } from '../context/UserContext.js';
 
 export default function Navbar() {
+
+  const { user } = useContext(UserContext);
+
+  const location = useLocation();
+
+
   return (
     <Container>
       <Content>
-      <div>
-      </div>
-      <div>
-        <Link to='/signin'>
-          <button>
-            Entrar
-          </button>
-        </Link>
-        <Link to='/signup'>
-          <button>
-            Cadastrar
-          </button>
-        </Link>
-      </div>
+        <Welcome>
+          {user ? `Seja bem-vindo(a), ${user}!` : ''}
+        </Welcome>
+        { user ?
+          <div>
+            <Link to='/users/me'>
+              <HomeButton currentPath={location.pathname==='/users/me'}>
+                Home
+              </HomeButton>
+            </Link>
+            <Link to='/ranking'>
+              <RankingButton currentPath={location.pathname==='/ranking'}>
+                Ranking
+              </RankingButton>
+            </Link>
+            <LogOutButton>Sair</LogOutButton>
+          </div>
+          :
+          <div>
+            <Link to='/signin'>
+              <SignInButton currentPath={location.pathname==='/signin'}>
+                Entrar
+              </SignInButton>
+            </Link>
+            <Link to='/signup'>
+              <SignUpButton currentPath={location.pathname==='/signup'}>
+                Cadastrar
+              </SignUpButton>
+            </Link>
+            </div>
+          }
       </Content>
-    </Container>
+    </Container >
   );
 }
 
@@ -51,8 +77,56 @@ const Content = styled.section`
     border: none;
 
     &:hover {
-      transform: scale(1.1);
-      cursor: pointer;
+      
     }
+  }
+`;
+
+const Welcome = styled.div`
+  color: #5D9040;
+`;
+
+const HomeButton = styled.button`
+  color: ${props => props.currentPath ? '#5D9040' : '#9C9C9C'};
+  
+  &:hover {
+    transform: ${props => props.currentPath ? 'none' : 'scale(1.1)'};
+    cursor: ${props => props.currentPath ? 'default' : 'pointer'};
+  }
+`;
+
+const RankingButton = styled.button`
+  color: ${props => props.currentPath ? '#5D9040' : '#9C9C9C'};
+  
+  &:hover {
+    transform: ${props => props.currentPath ? 'none' : 'scale(1.1)'};
+    cursor: ${props => props.currentPath ? 'default' : 'pointer'};
+  }
+`;
+
+const LogOutButton = styled.button`
+  color: ${props => props.currentPath ? '#5D9040' : '#9C9C9C'};
+  
+  &:hover {
+    transform: ${props => props.currentPath ? 'none' : 'scale(1.1)'};
+    cursor: ${props => props.currentPath ? 'default' : 'pointer'};
+  }
+`;
+
+const SignInButton = styled.button`
+  color: ${props => props.currentPath ? '#5D9040' : '#9C9C9C'};
+  
+  &:hover {
+    transform: ${props => props.currentPath ? 'none' : 'scale(1.1)'};
+    cursor: ${props => props.currentPath ? 'default' : 'pointer'};
+  }
+`;
+
+const SignUpButton = styled.button`
+  color: ${props => props.currentPath ? '#5D9040' : '#9C9C9C'};
+  
+  &:hover {
+    transform: ${props => props.currentPath ? 'none' : 'scale(1.1)'};
+    cursor: ${props => props.currentPath ? 'default' : 'pointer'};
   }
 `;

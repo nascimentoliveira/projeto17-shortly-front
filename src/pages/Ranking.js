@@ -1,28 +1,28 @@
 import axios from 'axios';
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { ImTrophy } from 'react-icons/im';
 
 import { RANKING_URL } from '../constants.js';
+import { UserContext } from '../context/UserContext.js';
 import RankingUser from '../components/RankingUser.js';
 
 export default function Ranking() {
 
+  const { user, token } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [ranking, setRanking] = useState([]);
 
-  const token = '720800a3-7c2a-4203-93b1-38fad3d84f16';
-
   const config = {
     headers: {
-        Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`
     }
-  }
-  
+  };
+
   useEffect(() => {
     setLoading(true);
-    axios.get(RANKING_URL, config)
+    axios.get(RANKING_URL, token ? config : null)
       .then(res => {
         setRanking(res.data);
         setLoading(false);
@@ -33,25 +33,27 @@ export default function Ranking() {
       });
   }, []);
 
-  
+
   return (
     <Container>
-        <TitleFooter>
-          <ImTrophy />
-          Ranking
-        </TitleFooter>
-        <RankingList>
-          {ranking.map((user, index) =>
-            <RankingUser
-              key={user.id}
-              user={user}
-              position={index+1}
-            />
-          )}
-        </RankingList>
+      <TitleFooter>
+        <ImTrophy />
+        Ranking
+      </TitleFooter>
+      <RankingList>
+        {ranking.map((user, index) =>
+          <RankingUser
+            key={user.id}
+            user={user}
+            position={index + 1}
+          />
+        )}
+      </RankingList>
+      {token ? ``: 
         <TitleFooter>
           Crie sua conta para usar nosso serviço!
         </TitleFooter>
+      }
     </Container>
   );
 }

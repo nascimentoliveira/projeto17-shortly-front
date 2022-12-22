@@ -1,4 +1,4 @@
-export const SIGN_UP_URL = 'http://localhost:5000/signup';
+export const SIGN_UP_URL = 'http://localhost:4000/signup';
 
 export const SIGN_IN_URL = 'http://localhost:4000/signin';
 
