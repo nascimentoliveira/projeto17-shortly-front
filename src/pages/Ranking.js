@@ -27,7 +27,7 @@ export default function Ranking() {
         setRanking(res.data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch(() => {
         setLoading(false);
       });
   }, []);

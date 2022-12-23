@@ -6,7 +6,7 @@ import logo from '../assets/images/shorts.png';
 export default function Logo() {
   return (
     <Container>
-      <Link to='/users/me'>
+      <Link to='/'>
         <Content title='Shortly'>
           Shortly
           <img src={logo} alt='Shortly' />
