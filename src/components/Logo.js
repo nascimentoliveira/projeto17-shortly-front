@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import logo from '../assets/images/shorts.png';
@@ -5,10 +6,12 @@ import logo from '../assets/images/shorts.png';
 export default function Logo() {
   return (
     <Container>
-      <Content title='Shortly'>
-        Shortly
-        <img src={logo} alt='Shortly' />
-      </Content>
+      <Link to='/users/me'>
+        <Content title='Shortly'>
+          Shortly
+          <img src={logo} alt='Shortly' />
+        </Content>
+      </Link>
     </Container>
   );
 }
