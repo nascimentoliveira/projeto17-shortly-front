@@ -3,7 +3,9 @@ import styled from 'styled-components';
 export default function RankingUser({ user, position }) {
   return (
     <Container>
-      {position}. {user.name} - {user.linksCount} links - {user.visitCount} visualizações
+      {position}. {user.name} - 
+      {user.linksCount} {user.linksCount > 1 ? 'links': 'link'} - 
+      {user.visitCount} {user.visitCount > 1 ? 'visualizações': 'visualização'}
     </Container>
   );
 }
