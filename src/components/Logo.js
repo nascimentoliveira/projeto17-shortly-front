@@ -36,6 +36,7 @@ const Content = styled.section`
   font-weight: 200;
   font-size: 64px;
   line-height: 80px;
+  color: #000000;
 
   > img { 
     max-width: 102px;
