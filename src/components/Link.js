@@ -24,26 +24,35 @@ export default function Link({ link, setRefresh }) {
 
   function deleteLink(id) {
     setLoading(true);
-    axios.delete(`${SHORTENED_LINKS_URL}/${id}`, config)
-      .then(res => {
-        setLoading(false);
-        setRefresh(Math.random());
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: res.data.message,
-          showConfirmButton: false,
-          timer: 1500
+    await(Swal.fire({
+      position: 'center',
+      icon: 'warning',
+      title: 'Deseja realmente excluir este link encurtado?',
+      showCancelButton: true,
+      cancelButtonText: 'Me enganei',
+      confirmButtonText: 'Sim, desejo excluir',
+    })).then(result => {
+      axios.delete(`${SHORTENED_LINKS_URL}/${id}`, config)
+        .then(res => {
+          setLoading(false);
+          setRefresh(Math.random());
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: res.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          });
+        })
+        .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.response.data.message
+          });
+          setLoading(false);
         });
-      })
-      .catch(err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: err.response.data.message
-        });
-        setLoading(false);
-      });
+    });
   }
 
   async function redirect(url) {
