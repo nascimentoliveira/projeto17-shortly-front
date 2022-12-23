@@ -1,11 +1,11 @@
-export const SIGN_UP_URL = 'http://localhost:4000/signup';
+export const SIGN_UP_URL = 'https://shortly-api-zy7t.onrender.com/signup';
 
-export const SIGN_IN_URL = 'http://localhost:4000/signin';
+export const SIGN_IN_URL = 'https://shortly-api-zy7t.onrender.com/signin';
 
-export const SHORTENED_LINKS_URL = 'http://localhost:4000/urls';
+export const SHORTENED_LINKS_URL = 'https://shortly-api-zy7t.onrender.com/urls';
 
-export const MY_LINKS_URL = 'http://localhost:4000/users/me';
+export const MY_LINKS_URL = 'https://shortly-api-zy7t.onrender.com/users/me';
 
-export const RANKING_URL = 'http://localhost:4000/ranking';
+export const RANKING_URL = 'https://shortly-api-zy7t.onrender.com/ranking';
 
-export const FORWARD_URL = 'http://localhost:4000/urls/open';
+export const FORWARD_URL = 'https://shortly-api-zy7t.onrender.com/urls/open';
