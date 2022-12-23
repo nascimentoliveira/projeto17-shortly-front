@@ -22,7 +22,7 @@ export default function Link({ link, setRefresh }) {
     }
   };
 
-  function deleteLink(id) {
+  async function deleteLink(id) {
     setLoading(true);
     await(Swal.fire({
       position: 'center',
