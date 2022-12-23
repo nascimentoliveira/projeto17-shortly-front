@@ -8,21 +8,21 @@ import { MY_LINKS_URL } from '../constants.js';
 import { UserContext } from '../context/UserContext.js';
 import Link from '../components/Link.js';
 import NewShorten from '../components/NewShorten.js';
+import Spinner from '../components/Spinner.js';
 
 export default function MyLinks() {
 
-  const { user, token } = useContext(UserContext);
+  const { token } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [links, setLinks] = useState([]);
   const [refresh, setRefresh] = useState(0);
   const navigate = useNavigate();
 
   const config = {
     headers: {
-        Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`
     }
-  }
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -38,32 +38,43 @@ export default function MyLinks() {
           text: err.response.data.message
         });
         if (err.response.status === 404) {
-          navigate('/signin');
+          navigate('/');
         }
         setLoading(false);
-        setError(true);
       });
   }, [refresh]);
 
-  return (
-    <Container>
-      <NewShorten setRefresh={setRefresh} />
-      <Links>
-        {links?.map(link =>
-          <Link
-            key={link.id}
-            link={link}
-            setRefresh={setRefresh}
-          />
-        )}
-      </Links>
-    </Container>
-  );
+
+  if (loading) {
+    return (
+      <Container loading={loading}>
+        <Spinner color='#80CC74' />
+      </Container>
+    );
+  } else {
+    return (
+      <Container loading={loading}>
+        <NewShorten setRefresh={setRefresh} />
+        <Links>
+          {links?.map(link =>
+            <Link
+              key={link.id}
+              link={link}
+              setRefresh={setRefresh}
+            />
+          )}
+        </Links>
+      </Container>
+    );
+  }
 }
 
 const Container = styled.section`
   width: 100%;
   margin-top: 80px;
+  display: ${props => props.loading ? 'flex' : 'default'};
+  justify-content: ${props => props.loading ? 'center' : 'default'};
+  align-items: ${props => props.loading ? 'center' : 'default'};
 `;
 
 const Links = styled.ul`

@@ -1,24 +1,26 @@
-import styled from 'styled-components';
 import { FaTrashAlt } from 'react-icons/fa';
+import { GoLinkExternal } from 'react-icons/go';
+import { MdCopyAll } from 'react-icons/md';
 import { useContext, useState } from 'react';
+import styled from 'styled-components';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-import { SHORTENED_LINKS_URL } from '../constants.js';
+import { SHORTENED_LINKS_URL, FORWARD_URL } from '../constants.js';
 import { UserContext } from '../context/UserContext.js';
 import Spinner from '../components/Spinner.js';
 
 export default function Link({ link, setRefresh }) {
 
-  const { user, token } = useContext(UserContext);
-  
+  const { token } = useContext(UserContext);
+
   const [loading, setLoading] = useState(true);
 
   const config = {
     headers: {
       Authorization: `Bearer ${token}`
     }
-  }
+  };
 
   function deleteLink(id) {
     setLoading(true);
@@ -44,13 +46,52 @@ export default function Link({ link, setRefresh }) {
       });
   }
 
+  async function redirect(url) {
+    await (Swal.fire({
+      position: 'center',
+      icon: 'warning',
+      title: 'Você está sendo redirecionado(a) para um link externo!',
+      showCancelButton: true,
+      cancelButtonText: 'Ficar por aqui',
+      confirmButtonText: 'Confio neste link',
+    })).then(result => {
+      if (result.isConfirmed) {
+        window.open(url, '_blank');
+      }
+    });
+  }
+
+  function copyLink(shortUrl) {
+    navigator.clipboard.writeText(`${FORWARD_URL}/${shortUrl}`);
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Link copiado!',
+      showConfirmButton: false,
+      timer: 1500
+    });
+  }
+
   return (
     <Container>
-      <Item title={link.url}><p>{link.url}</p></Item>
-      <Item><p>{link.shortUrl}</p></Item>
-      <Item>{`Quantidade de visitantes: `+link.visitCount}</Item>
+      <Item title={link.url}>
+        <p>{link.url}</p>
+        <GoLinkExternal
+          title={'Ir para este endereço'}
+          onClick={() => redirect(link.url)}
+        />
+      </Item>
+      <Item>
+        <p>{link.shortUrl}
+          <MdCopyAll
+            title={'Copiar link encurtado'}
+            onClick={() => copyLink(link.shortUrl)}
+          />
+        </p>
+      </Item>
+      <Item>{`Quantidade de visitantes: ` + link.visitCount}</Item>
       <DeleteShortLink onClick={() => deleteLink(link.id)}>
-        {loading ? <FaTrashAlt /> : <Spinner color='#EA4F4F'/>}
+        {loading ? <FaTrashAlt /> : <Spinner color='#EA4F4F' />}
       </DeleteShortLink>
     </Container>
   );
@@ -88,6 +129,17 @@ const Item = styled.div`
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  svg {
+    margin: 0px 5px;
+    width: 22px;
+    height: 22px;
+    color: #FFFFFF;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 `;
 

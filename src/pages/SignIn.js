@@ -1,14 +1,15 @@
-import styled from 'styled-components';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import styled from 'styled-components';
 
 import Spinner from '../components/Spinner.js';
 import { UserContext } from '../context/UserContext.js';
 import { SIGN_IN_URL } from '../constants.js';
 
 export default function SignIn() {
+
   const { setUser, setToken } = useContext(UserContext);
   const [formEnabled, setFormEnabled] = useState(true);
   const [form, setForm] = useState({ email: '', password: '' });
@@ -33,7 +34,7 @@ export default function SignIn() {
           icon: 'error',
           title: 'Oops...',
           text: err.response.data.message
-        })
+        });
         setForm({
           ...form,
           password: ''

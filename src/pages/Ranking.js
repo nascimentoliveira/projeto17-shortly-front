@@ -6,12 +6,12 @@ import { ImTrophy } from 'react-icons/im';
 import { RANKING_URL } from '../constants.js';
 import { UserContext } from '../context/UserContext.js';
 import RankingUser from '../components/RankingUser.js';
+import Spinner from '../components/Spinner.js';
 
 export default function Ranking() {
 
-  const { user, token } = useContext(UserContext);
+  const { token } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [ranking, setRanking] = useState([]);
 
   const config = {
@@ -27,35 +27,41 @@ export default function Ranking() {
         setRanking(res.data);
         setLoading(false);
       })
-      .catch((err) => {
+      .catch(err => {
         setLoading(false);
-        setError(true);
       });
   }, []);
 
-
-  return (
-    <Container>
-      <TitleFooter>
-        <ImTrophy />
-        Ranking
-      </TitleFooter>
-      <RankingList>
-        {ranking.map((user, index) =>
-          <RankingUser
-            key={user.id}
-            user={user}
-            position={index + 1}
-          />
-        )}
-      </RankingList>
-      {token ? ``: 
+  if (loading) {
+    return (
+      <Container>
+        <Spinner color='#80CC74' />
+      </Container>
+    );
+  } else {
+    return (
+      <Container>
         <TitleFooter>
-          Crie sua conta para usar nosso serviço!
+          <ImTrophy />
+          Ranking
         </TitleFooter>
-      }
-    </Container>
-  );
+        <RankingList>
+          {ranking.map((user, index) =>
+            <RankingUser
+              key={user.id}
+              user={user}
+              position={index + 1}
+            />
+          )}
+        </RankingList>
+        {token ? `` :
+          <TitleFooter>
+            Crie sua conta para usar nosso serviço!
+          </TitleFooter>
+        }
+      </Container>
+    );
+  }
 }
 
 const Container = styled.div`

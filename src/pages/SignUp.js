@@ -1,14 +1,14 @@
-import styled from 'styled-components';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import styled from 'styled-components';
 
 import Spinner from '../components/Spinner.js';
 import { SIGN_UP_URL } from '../constants.js';
 
 export default function SignUp() {
-  /* const { setUser, setToken } = useContext(DataContext); */
+
   const [formEnabled, setFormEnabled] = useState(true);
   const [form, setForm] = useState({
     name: '',
@@ -34,7 +34,7 @@ export default function SignUp() {
           title: res.data.message,
           showConfirmButton: false,
           timer: 1500
-        })
+        });
         navigate('/signin');
       })
       .catch(err => {
@@ -42,7 +42,7 @@ export default function SignUp() {
           icon: 'error',
           title: 'Oops...',
           text: err.response.data.message
-        })
+        });
         setForm({
           ...form,
           password: '',
@@ -55,7 +55,7 @@ export default function SignUp() {
   return (
     <Container>
       <Form onSubmit={signUp}>
-      <Input
+        <Input
           type='text'
           placeholder='Nome'
           name='name'

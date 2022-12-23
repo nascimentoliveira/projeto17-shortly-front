@@ -9,16 +9,15 @@ import Spinner from '../components/Spinner.js';
 
 export default function NewShorten({ setRefresh }) {
 
-  const { user, token } = useContext(UserContext);
-  const [formEnabled, setFormEnabled] = useState(true);
+  const { token } = useContext(UserContext);
   const [form, setForm] = useState({ url: '' });
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const config = {
     headers: {
       Authorization: `Bearer ${token}`
     }
-  }
+  };
 
   function handleForm(e) {
     const { name, value } = e.target;
@@ -51,7 +50,6 @@ export default function NewShorten({ setRefresh }) {
         setForm({ url: '' });
       });
   }
-
   return (
     <Container>
       <Form onSubmit={newShorten}>
@@ -61,16 +59,16 @@ export default function NewShorten({ setRefresh }) {
           name='url'
           value={form.url}
           onChange={handleForm}
-          disabled={!formEnabled}
+          disabled={loading}
           required
         />
 
         <Button
           type='submit'
-          title={formEnabled ? 'Encurtar link' : 'aguarde...'}
-          disabled={!formEnabled}
+          title={loading ? 'aguarde...' : 'Encurtar link'}
+          disabled={loading}
         >
-          {formEnabled ? 'Encurtar link' : <Spinner />}
+          {loading ? <Spinner /> : 'Encurtar link'}
         </Button>
       </Form>
     </Container>
@@ -136,6 +134,9 @@ const Button = styled.button`
   border: none;
   outline: none;
   transition: 1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: #4A7333;

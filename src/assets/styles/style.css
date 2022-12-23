@@ -5,6 +5,10 @@
   transition: all ease .2s;
 }
 
+a {
+  text-decoration: none;
+}
+
 body, button, input {
   font-family: 'Lexend Deca', sans-serif;
 }

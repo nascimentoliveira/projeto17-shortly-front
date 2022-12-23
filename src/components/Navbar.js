@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
+import styled from 'styled-components';
 
 import { UserContext } from '../context/UserContext.js';
 
@@ -81,10 +81,6 @@ const Content = styled.section`
     background-color: transparent;
     outline: none;
     border: none;
-
-    &:hover {
-      
-    }
   }
 `;
 
