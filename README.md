@@ -21,12 +21,12 @@ Shortly é uma aplicação web inovadora que oferece um serviço de encurtamento
 ## Como Usar
 
 1. Faça login na plataforma usando suas credenciais existentes ou crie uma nova conta rapidamente.
-2. Na página principal do Shortly, encontre o campo "Links que cabem no bolso".
+2. Na página principal do Shortly, encontre o campo `Links que cabem no bolso`.
 3. Insira a URL longa que deseja encurtar no campo designado.
-4. Clique no botão "Encurtar link" e aguarde o processamento. Em segundos, o Shortly irá gerar uma nova URL curta e personalizada.
+4. Clique no botão `Encurtar link` e aguarde o processamento. Em segundos, o Shortly irá gerar uma nova URL curta e personalizada.
 5. Copie a nova URL encurtada e compartilhe-a facilmente em redes sociais, e-mails, mensagens ou qualquer outro meio de comunicação.
-6. Utilize a página "Home" para gerenciar e acompanhar o desempenho dos seus links encurtados.
-7. Verifique o ranking de usuários na página "Ranking" para descobrir sua posição e comparar seu desempenho com outros usuários ativos.
+6. Utilize a página `Home` para gerenciar e acompanhar o desempenho dos seus links encurtados.
+7. Verifique o ranking de usuários na página `Ranking` para descobrir sua posição e comparar seu desempenho com outros usuários ativos.
 
 ## Tecnologias Utilizadas
 
@@ -47,9 +47,23 @@ Shortly foi desenvolvido utilizando as seguintes tecnologias:
     ```bash
     npm install
     ```
-3. Configure as variáveis de ambiente.
+3. Configure as variáveis de ambiente:  
+    Antes de executar a aplicação, é necessário configurar as variáveis de ambiente corretamente. Siga os passos abaixo:
 
-4. Inicie o projeto:
+    -  Renomeie o arquivo `.env.example` para `.env`.
+    - Abra o arquivo `.env` em um editor de texto.
+    - Procure a variável `APP_API_BASE_URL` e defina-a com a URL base da sua API. Exemplo:  
+        ```bash
+        APP_API_BASE_URL=http://localhost:8000/api
+        ```
+    - Verifique se existem outras variáveis de ambiente necessárias para o funcionamento da aplicação e defina-as de acordo com a sua configuração.
+    - Salve o arquivo `.env`.
+
+    Certifique-se de não compartilhar o arquivo `.env` contendo informações sensíveis, como senhas, chaves de API ou tokens de acesso. Mantenha-o seguro e fora do controle de versão do seu repositório.
+
+    Após configurar as variáveis de ambiente, a aplicação estará pronta para ser executada.
+
+4. Execute o projeto:
     ```bash
     npm start
     ```
@@ -73,13 +87,13 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em s
 
 Se você deseja contribuir para o projeto, siga os passos abaixo:
 
-1. Faça um *fork* do repositório.
-2. Crie uma nova *branch* com a sua contribuição: 
+1. Faça um `fork` do repositório.
+2. Crie uma nova `branch` com a sua contribuição: 
     ```bash
     git checkout -b <sua-contribuicao>
     ```
-3. Faça as modificações que sugerir no código.
-4. Faça *commit* das suas alterações:
+3. Faça as suas modificações  no código.
+4. Faça `commit` das suas alterações:
     ```bash
     git commit -m "Sua contribuição"
     ```
@@ -87,11 +101,11 @@ Se você deseja contribuir para o projeto, siga os passos abaixo:
     ```bash
     git push origin <sua-contribuicao>
     ```
-6. Abra um *pull request* no repositório original, descrevendo as modificações realizadas.
+6. Abra um `pull request` no repositório original, descrevendo as modificações realizadas.
 
 Se te ajudei de alguma forma, ficarei feliz em saber. Se possível:  
-⭐️  *star* o projeto   
-🪲 Encontrar e relatar *issues*
+⭐️ dê uma estrela para este projeto; e   
+🪲 Encontre e relate `issues`
 
 ## Licença
 

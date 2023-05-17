@@ -1,11 +1,11 @@
-export const SIGN_UP_URL = 'https://shortly-api-zy7t.onrender.com/signup';
+export const SIGN_UP_URL = process.env.APP_API_BASE_URL + '/signup';
 
-export const SIGN_IN_URL = 'https://shortly-api-zy7t.onrender.com/signin';
+export const SIGN_IN_URL = process.env.APP_API_BASE_URL + '/signin';
 
-export const SHORTENED_LINKS_URL = 'https://shortly-api-zy7t.onrender.com/urls';
+export const SHORTENED_LINKS_URL = process.env.APP_API_BASE_URL + '/urls';
 
-export const MY_LINKS_URL = 'https://shortly-api-zy7t.onrender.com/users/me';
+export const MY_LINKS_URL = process.env.APP_API_BASE_URL + '/users/me';
 
-export const RANKING_URL = 'https://shortly-api-zy7t.onrender.com/ranking';
+export const RANKING_URL = process.env.APP_API_BASE_URL + '/ranking';
 
-export const FORWARD_URL = 'https://shortly-api-zy7t.onrender.com/urls/open';
+export const FORWARD_URL = process.env.APP_API_BASE_URL + '/urls/open';
