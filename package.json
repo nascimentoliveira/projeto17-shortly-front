@@ -1,7 +1,9 @@
 {
-  "name": "projeto17-shortly-front",
+  "name": "shortly",
   "version": "0.1.0",
   "private": true,
+  "author": "Thiago Nascimento",
+  "license": "MPL-2.0",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
