@@ -58,8 +58,8 @@ Shortly foi desenvolvido utilizando as seguintes tecnologias:
         ```
     - Verifique se existem outras variáveis de ambiente necessárias para o funcionamento da aplicação e defina-as de acordo com a sua configuração.
     - Salve o arquivo `.env`.
-
-    Certifique-se de não compartilhar o arquivo `.env` contendo informações sensíveis, como senhas, chaves de API ou tokens de acesso. Mantenha-o seguro e fora do controle de versão do seu repositório.
+    
+    *Certifique-se de não compartilhar o arquivo `.env` contendo informações sensíveis, como senhas, chaves de API ou tokens de acesso. Mantenha-o seguro e fora do controle de versão do seu repositório.*
 
     Após configurar as variáveis de ambiente, a aplicação estará pronta para ser executada.
 
