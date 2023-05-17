@@ -1,11 +1,11 @@
-![created date - shortly](https://img.shields.io/date/1671332400?color=97CA00&label=created%20at&style=flat-square)
-![license - shortly](https://img.shields.io/github/license/nascimentoliveira/shortly?color=97CA00&style=flat-square)
-![last commit - shortly](https://img.shields.io/github/last-commit/nascimentoliveira/shortly?color=97CA00&style=flat-square)
-![repo size - shortly](https://img.shields.io/github/repo-size/nascimentoliveira/shortly?color=97CA00&style=flat-square)
-![files - shortly](https://img.shields.io/github/directory-file-count/nascimentoliveira/shortly?color=97CA00&style=flat-square)
-![language - shortly](https://img.shields.io/github/languages/top/nascimentoliveira/shortly?color=97CA00&style=flat-square)
-![stars - shortly](https://img.shields.io/github/stars/nascimentoliveira/shortly?color=97CA00&style=flat-square)
-![forks - shortly](https://img.shields.io/github/forks/nascimentoliveira/shortly?color=97CA00&style=flat-square)
+![created date - shortly](https://img.shields.io/date/1671332400?color=007ec6&label=created%20at&style=flat-square)
+![license - shortly](https://img.shields.io/github/license/nascimentoliveira/shortly?color=007ec6&style=flat-square)
+![last commit - shortly](https://img.shields.io/github/last-commit/nascimentoliveira/shortly?color=007ec6&style=flat-square)
+![repo size - shortly](https://img.shields.io/github/repo-size/nascimentoliveira/shortly?color=007ec6&style=flat-square)
+![files - shortly](https://img.shields.io/github/directory-file-count/nascimentoliveira/shortly?color=007ec6&style=flat-square)
+![language - shortly](https://img.shields.io/github/languages/top/nascimentoliveira/shortly?color=007ec6&style=flat-square)
+![stars - shortly](https://img.shields.io/github/stars/nascimentoliveira/shortly?color=007ec6&style=flat-square)
+![forks - shortly](https://img.shields.io/github/forks/nascimentoliveira/shortly?color=007ec6&style=flat-square)
 
 # Shortly
 
