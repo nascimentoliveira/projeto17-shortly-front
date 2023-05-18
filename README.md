@@ -14,7 +14,7 @@ Shortly é uma aplicação web inovadora que oferece um serviço de encurtamento
 
 > O código-fonte do back-end da aplicação está hospedado no GitHub em: [Shortly Back-end](https://github.com/nascimentoliveira/shortly-api)
 
->Shortly atualmente pode ser experimentado em: [Shortly Live Demo](https://nascimentoliveira-shortly.vercel.app)
+> Shortly atualmente pode ser experimentado em: [Shortly Live Demo](https://nascimentoliveira-shortly.vercel.app)
 
 ## Funcionalidades Principais
 
