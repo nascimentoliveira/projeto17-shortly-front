@@ -2,7 +2,7 @@
   "name": "shortly",
   "version": "0.1.0",
   "private": true,
-  "author": "Thiago Nascimento",
+  "author": "Thiago Oliveira",
   "license": "MPL-2.0",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

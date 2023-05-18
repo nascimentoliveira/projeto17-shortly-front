@@ -1,4 +1,4 @@
-![created date - shortly](https://img.shields.io/date/1671332400?color=007ec6&label=created%20at&style=flat-square)
+![created date - shortly](https://img.shields.io/date/1671332400?color=007ec6&label=created&style=flat-square)
 ![license - shortly](https://img.shields.io/github/license/nascimentoliveira/shortly?color=007ec6&style=flat-square)
 ![last commit - shortly](https://img.shields.io/github/last-commit/nascimentoliveira/shortly?color=007ec6&style=flat-square)
 ![repo size - shortly](https://img.shields.io/github/repo-size/nascimentoliveira/shortly?color=007ec6&style=flat-square)
@@ -10,6 +10,11 @@
 # Shortly
 
 Shortly é uma aplicação web inovadora que oferece um serviço de encurtamento de links eficiente e intuitivo. Com o Shortly, os usuários podem transformar URLs longas em links curtos, tornando mais fácil e conveniente compartilhar conteúdo na web. Além disso, a plataforma apresenta recursos adicionais, como um sistema de ranqueamento dos usuários com base na popularidade dos links compartilhados.
+
+
+> O código-fonte do back-end da aplicação está hospedado no GitHub em: [Shortly Back-end](https://github.com/nascimentoliveira/shortly-api)
+
+>Shortly atualmente pode ser experimentado em: [Shortly Live Demo](https://nascimentoliveira-shortly.vercel.app)
 
 ## Funcionalidades Principais
 
@@ -34,23 +39,47 @@ Shortly foi desenvolvido utilizando as seguintes tecnologias:
 
 - Linguagem de Programação: [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference).
 - Banco de Dados: [PostgreSQL](https://www.postgresql.org/about/).
-- Front-end: [React](https://react.dev/learn) e [Styled Components](https://styled-components.com/).
-- Back-end: [Node.js](https://nodejs.org/en/about).
+- Front-end
+    - [React](https://react.dev/learn): Biblioteca JavaScript de código aberto para a construção de interfaces de usuário.
+    - [Axios](https://axios-http.com/ptbr/docs/intro): Biblioteca JavaScript para realizar requisições HTTP.
+    - [Styled Components](https://styled-components.com/): Biblioteca para escrever estilos CSS de forma dinâmica em componentes React.
+    - [React Dom](https://www.npmjs.com/package/react-dom): Biblioteca para renderização de componentes React no navegador.
+    - [Sweet Alert](https://sweetalert2.github.io/): Biblioteca JavaScript para exibir belas caixas de diálogo modais.
+- Back-end
+    - [Node.js](https://nodejs.org/en/about): Plataforma de desenvolvimento JavaScript assíncrona baseada no motor V8 do Chrome.
+    - [Express](https://expressjs.com/pt-br/): Framework web rápido e minimalista para Node.js.
+    - [Dotenv](https://www.npmjs.com/package/dotenv): Pacote para carregar variáveis de ambiente a partir de um arquivo .env.
+    - [Bcrypt](https://www.npmjs.com/package/bcrypt): Biblioteca para criptografia de senhas.
+    - [Joi](https://joi.dev/): Biblioteca para validação de dados.
+    - [Nanoid](https://www.npmjs.com/package/nanoid): Pacote para a geração de identificadores únicos e aleatórios.
+
+Essas tecnologias foram escolhidas para proporcionar uma experiência de desenvolvimento moderna, eficiente e escalável.
+
+## Pré-requisitos
+
+Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em seu computador:  
+-   Node.js (versão 14 ou superior)
+-   NPM (versão 7 ou superior)
 
 ## Instalação
 1. Clone o repositório do projeto:
     ```bash
     git clone https://github.com/nascimentoliveira/shortly.git
     ```
-
-2. Instale as dependências:
+2. Acesse o diretório do projeto.
+   ```bash
+   cd shortly-api
+   ```
+3. Instale as dependências:
     ```bash
     npm install
     ```
-3. Configure as variáveis de ambiente:  
+4. Configure as variáveis de ambiente:  
     Antes de executar a aplicação, é necessário configurar as variáveis de ambiente corretamente. Siga os passos abaixo:
-
     -  Renomeie o arquivo `.env.example` para `.env`.
+        ```bash
+        mv .env.example .env
+        ```
     - Abra o arquivo `.env` em um editor de texto.
     - Procure a variável `APP_API_BASE_URL` e defina-a com a URL base da sua API. Exemplo:  
         ```bash
@@ -63,26 +92,14 @@ Shortly foi desenvolvido utilizando as seguintes tecnologias:
 
     Após configurar as variáveis de ambiente, a aplicação estará pronta para ser executada.
 
-4. Execute o projeto:
+5. Execute o projeto:
     ```bash
     npm start
     ```
-5. A aplicação ficará disponível em:
+6. A aplicação ficará disponível em:
     ```bash
     http://localhost:3000
     ```
-## Pré-requisitos
-
-Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em seu computador:  
--   Node.js (versão 14 ou superior)
--   NPM (versão 7 ou superior)
-
-## Repositório de Back-end e Deploy
-
-> O código-fonte do back-end da aplicação está hospedado no GitHub em: [Shortly Back-end](https://github.com/nascimentoliveira/shortly-api)
-
->Shortly atualmente pode ser experimentado em: [Shortly Live Demo](https://nascimentoliveira-shortly.vercel.app)
-
 ## Contribuição
 
 Se você deseja contribuir para o projeto, siga os passos abaixo:
