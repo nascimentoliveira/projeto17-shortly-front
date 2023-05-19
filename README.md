@@ -15,6 +15,8 @@ Shortly é uma aplicação web inovadora que oferece um serviço de encurtamento
 > O código-fonte do back-end da aplicação está hospedado no GitHub em: [Shortly Back-end](https://github.com/nascimentoliveira/shortly-api)
 
 > Shortly atualmente pode ser experimentado em: [Shortly Live Demo](https://nascimentoliveira-shortly.vercel.app)
+>  
+>> *A primeira requisição ao Live Demo pode levar um pouco mais de tempo para carregar. Isso ocorre porque os servidores são ativados conforme necessário e podem levar alguns instantes para iniciar!*
 
 ## Funcionalidades Principais
 
@@ -66,29 +68,37 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em s
     ```bash
     git clone https://github.com/nascimentoliveira/shortly.git
     ```
+
 2. Acesse o diretório do projeto.
    ```bash
-   cd shortly-api
+   cd shortly
    ```
+
 3. Instale as dependências:
     ```bash
     npm install
     ```
+
 4. Configure as variáveis de ambiente:  
     Antes de executar a aplicação, é necessário configurar as variáveis de ambiente corretamente. Siga os passos abaixo:
     -  Renomeie o arquivo `.env.example` para `.env`.
+
         ```bash
         mv .env.example .env
         ```
+
     - Abra o arquivo `.env` em um editor de texto.
     - Procure a variável `APP_API_BASE_URL` e defina-a com a URL base da sua API. Exemplo:  
+
         ```bash
         APP_API_BASE_URL=http://localhost:8000/api
         ```
+
     - Verifique se existem outras variáveis de ambiente necessárias para o funcionamento da aplicação e defina-as de acordo com a sua configuração.
+
     - Salve o arquivo `.env`.
     
-    *Certifique-se de não compartilhar o arquivo `.env` contendo informações sensíveis, como senhas, chaves de API ou tokens de acesso. Mantenha-o seguro e fora do controle de versão do seu repositório.*
+    > ⚠️ *Certifique-se de não compartilhar o arquivo `.env` contendo informações sensíveis, como senhas, chaves de API ou tokens de acesso. Mantenha-o seguro e fora do controle de versão do seu repositório.*
 
     Após configurar as variáveis de ambiente, a aplicação estará pronta para ser executada.
 
@@ -100,6 +110,7 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em s
     ```bash
     http://localhost:3000
     ```
+    
 ## Contribuição
 
 Se você deseja contribuir para o projeto, siga os passos abaixo:
