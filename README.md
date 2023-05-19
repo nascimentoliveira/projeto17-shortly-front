@@ -1,4 +1,4 @@
-![created date - shortly](https://img.shields.io/date/1671332400?color=007ec6&label=created&style=flat-square)
+![created date - shortly](https://img.shields.io/date/1671321600?color=007ec6&label=created&style=flat-square)
 ![license - shortly](https://img.shields.io/github/license/nascimentoliveira/shortly?color=007ec6&style=flat-square)
 ![last commit - shortly](https://img.shields.io/github/last-commit/nascimentoliveira/shortly?color=007ec6&style=flat-square)
 ![repo size - shortly](https://img.shields.io/github/repo-size/nascimentoliveira/shortly?color=007ec6&style=flat-square)
@@ -7,7 +7,7 @@
 ![stars - shortly](https://img.shields.io/github/stars/nascimentoliveira/shortly?color=007ec6&style=flat-square)
 ![forks - shortly](https://img.shields.io/github/forks/nascimentoliveira/shortly?color=007ec6&style=flat-square)
 
-# Shortly
+# Shortly - Plataforma de Encurtamento de Links
 
 Shortly é uma aplicação web inovadora que oferece um serviço de encurtamento de links eficiente e intuitivo. Com o Shortly, os usuários podem transformar URLs longas em links curtos, tornando mais fácil e conveniente compartilhar conteúdo na web. Além disso, a plataforma apresenta recursos adicionais, como um sistema de ranqueamento dos usuários com base na popularidade dos links compartilhados.
 
