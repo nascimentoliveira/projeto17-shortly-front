@@ -1,18 +1,17 @@
-import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-import styled from 'styled-components';
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
+import styled from "styled-components";
 
-import Spinner from '../components/Spinner.js';
-import { UserContext } from '../context/UserContext.js';
-import { SIGN_IN_URL } from '../constants.js';
+import Spinner from "../components/Spinner.js";
+import { UserContext } from "../context/UserContext.js";
 
 export default function SignIn() {
 
   const { setUser, setToken } = useContext(UserContext);
   const [formEnabled, setFormEnabled] = useState(true);
-  const [form, setForm] = useState({ email: '', password: '' });
+  const [form, setForm] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
   function handleForm(e) {
@@ -23,21 +22,21 @@ export default function SignIn() {
   function signIn(e) {
     e.preventDefault();
     setFormEnabled(false);
-    axios.post(SIGN_IN_URL, form)
+    axios.post(`${process.env.REACT_APP_API_BASE_URL}/auth`, form)
       .then(res => {
         setUser(res.data.name);
         setToken(res.data.token);
-        navigate('/');
+        navigate("/");
       })
       .catch(err => {
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
+          icon: "error",
+          title: "Oops...",
           text: err.response.data.message
         });
         setForm({
           ...form,
-          password: ''
+          password: ""
         });
         setFormEnabled(true);
       });
@@ -47,9 +46,9 @@ export default function SignIn() {
     <Container>
       <Form onSubmit={signIn}>
         <Input
-          type='email'
-          placeholder='E-mail'
-          name='email'
+          type="email"
+          placeholder="E-mail"
+          name="email"
           value={form.email}
           onChange={handleForm}
           disabled={!formEnabled}
@@ -57,9 +56,9 @@ export default function SignIn() {
         />
 
         <Input
-          type='password'
-          placeholder='Senha'
-          name='password'
+          type="password"
+          placeholder="Senha"
+          name="password"
           value={form.password}
           onChange={handleForm}
           disabled={!formEnabled}
@@ -67,11 +66,11 @@ export default function SignIn() {
         />
 
         <Button
-          type='submit'
-          title={formEnabled ? 'Fazer login' : 'aguarde...'}
+          type="submit"
+          title={formEnabled ? "Fazer login" : "aguarde..."}
           disabled={!formEnabled}
         >
-          {formEnabled ? 'Entrar' : <Spinner />}
+          {formEnabled ? "Entrar" : <Spinner />}
         </Button>
       </Form>
     </Container>

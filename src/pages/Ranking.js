@@ -1,12 +1,11 @@
-import axios from 'axios';
-import styled from 'styled-components';
-import { useContext, useState, useEffect } from 'react';
-import { ImTrophy } from 'react-icons/im';
+import axios from "axios";
+import styled from "styled-components";
+import { useContext, useState, useEffect } from "react";
+import { ImTrophy } from "react-icons/im";
 
-import { RANKING_URL } from '../constants.js';
-import { UserContext } from '../context/UserContext.js';
-import RankingUser from '../components/RankingUser.js';
-import Spinner from '../components/Spinner.js';
+import { UserContext } from "../context/UserContext.js";
+import RankingUser from "../components/RankingUser.js";
+import Spinner from "../components/Spinner.js";
 
 export default function Ranking() {
 
@@ -22,7 +21,7 @@ export default function Ranking() {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(RANKING_URL, token ? config : null)
+    axios.get(`${process.env.REACT_APP_API_BASE_URL}/ranking`, token ? config : null)
       .then(res => {
         setRanking(res.data);
         setLoading(false);
@@ -35,7 +34,7 @@ export default function Ranking() {
   if (loading) {
     return (
       <Container>
-        <Spinner color='#80CC74' />
+        <Spinner color="#80CC74" />
       </Container>
     );
   } else {

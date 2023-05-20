@@ -1,14 +1,13 @@
-import { FaTrashAlt } from 'react-icons/fa';
-import { GoLinkExternal } from 'react-icons/go';
-import { MdCopyAll } from 'react-icons/md';
-import { useContext, useState } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
-import Swal from 'sweetalert2';
+import { FaTrashAlt } from "react-icons/fa";
+import { GoLinkExternal } from "react-icons/go";
+import { MdCopyAll } from "react-icons/md";
+import { useContext, useState } from "react";
+import styled from "styled-components";
+import axios from "axios";
+import Swal from "sweetalert2";
 
-import { SHORTENED_LINKS_URL, FORWARD_URL } from '../constants.js';
-import { UserContext } from '../context/UserContext.js';
-import Spinner from '../components/Spinner.js';
+import { UserContext } from "../context/UserContext.js";
+import Spinner from "../components/Spinner.js";
 
 export default function Link({ link, setRefresh }) {
 
@@ -24,22 +23,22 @@ export default function Link({ link, setRefresh }) {
 
   async function deleteLink(id) {
     setLoading(true);
-    await(Swal.fire({
-      position: 'center',
-      icon: 'warning',
-      title: 'Deseja realmente excluir este link encurtado?',
+    await (Swal.fire({
+      position: "center",
+      icon: "warning",
+      title: "Deseja realmente excluir este link encurtado?",
       showCancelButton: true,
-      cancelButtonText: 'Me enganei',
-      confirmButtonText: 'Sim, desejo excluir',
+      cancelButtonText: "Me enganei",
+      confirmButtonText: "Sim, desejo excluir",
     })).then(result => {
       if (result.isConfirmed) {
-        axios.delete(`${SHORTENED_LINKS_URL}/${id}`, config)
+        axios.delete(`${process.env.REACT_APP_API_BASE_URL}/urls/${id}`, config)
           .then(res => {
             setLoading(false);
             setRefresh(Math.random());
             Swal.fire({
-              position: 'center',
-              icon: 'success',
+              position: "center",
+              icon: "success",
               title: res.data.message,
               showConfirmButton: false,
               timer: 1500
@@ -47,8 +46,8 @@ export default function Link({ link, setRefresh }) {
           })
           .catch(err => {
             Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
+              icon: "error",
+              title: "Oops...",
               text: err.response.data.message
             });
             setLoading(false);
@@ -59,25 +58,25 @@ export default function Link({ link, setRefresh }) {
 
   async function redirect(url) {
     await (Swal.fire({
-      position: 'center',
-      icon: 'warning',
-      title: 'Você está sendo redirecionado(a) para um link externo!',
+      position: "center",
+      icon: "warning",
+      title: "Você está sendo redirecionado(a) para um link externo!",
       showCancelButton: true,
-      cancelButtonText: 'Ficar por aqui',
-      confirmButtonText: 'Confio neste link',
+      cancelButtonText: "Ficar por aqui",
+      confirmButtonText: "Confio neste link",
     })).then(result => {
       if (result.isConfirmed) {
-        window.open(url, '_blank');
+        window.open(url, "_blank");
       }
     });
   }
 
   function copyLink(shortUrl) {
-    navigator.clipboard.writeText(`${FORWARD_URL}/${shortUrl}`);
+    navigator.clipboard.writeText(`${process.env.REACT_APP_API_BASE_URL}/${shortUrl}`);
     Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Link copiado!',
+      position: "center",
+      icon: "success",
+      title: "Link copiado!",
       showConfirmButton: false,
       timer: 1500
     });
@@ -88,21 +87,21 @@ export default function Link({ link, setRefresh }) {
       <Item title={link.url}>
         <p>{link.url}</p>
         <GoLinkExternal
-          title={'Ir para este endereço'}
+          title={"Ir para este endereço"}
           onClick={() => redirect(link.url)}
         />
       </Item>
       <Item>
         <p>{link.shortUrl}
           <MdCopyAll
-            title={'Copiar link encurtado'}
+            title={"Copiar link encurtado"}
             onClick={() => copyLink(link.shortUrl)}
           />
         </p>
       </Item>
       <Item>{`Quantidade de visitantes: ` + link.visitCount}</Item>
       <DeleteShortLink onClick={() => deleteLink(link.id)}>
-        {loading ? <FaTrashAlt /> : <Spinner color='#EA4F4F' />}
+        {loading ? <FaTrashAlt /> : <Spinner color="#EA4F4F" />}
       </DeleteShortLink>
     </Container>
   );

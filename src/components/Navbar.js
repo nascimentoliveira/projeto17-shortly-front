@@ -1,8 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
-import { useContext } from 'react';
-import styled from 'styled-components';
+import { Link, useLocation } from "react-router-dom";
+import { useContext } from "react";
+import styled from "styled-components";
 
-import { UserContext } from '../context/UserContext.js';
+import { UserContext } from "../context/UserContext.js";
 
 export default function Navbar() {
 
@@ -14,21 +14,21 @@ export default function Navbar() {
     <Container>
       <Content>
         <Welcome>
-          {user ? `Seja bem-vindo(a), ${user}!` : ''}
+          {user ? `Seja bem-vindo(a), ${user}!` : ""}
         </Welcome>
-        { user ?
+        {user ?
           <div>
-            <Link to='/users/me'>
-              <HomeButton currentPath={location.pathname==='/users/me'}>
+            <Link to="/urls">
+              <HomeButton currentPath={location.pathname === "/users/me"}>
                 Home
               </HomeButton>
             </Link>
-            <Link to='/ranking'>
-              <RankingButton currentPath={location.pathname==='/ranking'}>
+            <Link to="/ranking">
+              <RankingButton currentPath={location.pathname === "/ranking"}>
                 Ranking
               </RankingButton>
             </Link>
-            <Link to='/signin'>
+            <Link to="/auth">
               <LogOutButton onClick={() => {
                 setUser();
                 setToken();
@@ -39,18 +39,18 @@ export default function Navbar() {
           </div>
           :
           <div>
-            <Link to='/signin'>
-              <SignInButton currentPath={location.pathname==='/signin'}>
+            <Link to="/auth">
+              <SignInButton currentPath={location.pathname === "/signin"}>
                 Entrar
               </SignInButton>
             </Link>
-            <Link to='/signup'>
-              <SignUpButton currentPath={location.pathname==='/signup'}>
+            <Link to="/users">
+              <SignUpButton currentPath={location.pathname === "/signup"}>
                 Cadastrar
               </SignUpButton>
             </Link>
-            </div>
-          }
+          </div>
+        }
       </Content>
     </Container >
   );
@@ -89,46 +89,46 @@ const Welcome = styled.div`
 `;
 
 const HomeButton = styled.button`
-  color: ${props => props.currentPath ? '#5D9040' : '#9C9C9C'};
+  color: ${props => props.currentPath ? "#5D9040" : "#9C9C9C"};
   
   &:hover {
-    transform: ${props => props.currentPath ? 'none' : 'scale(1.1)'};
-    cursor: ${props => props.currentPath ? 'default' : 'pointer'};
+    transform: ${props => props.currentPath ? "none" : "scale(1.1)"};
+    cursor: ${props => props.currentPath ? "default" : "pointer"};
   }
 `;
 
 const RankingButton = styled.button`
-  color: ${props => props.currentPath ? '#5D9040' : '#9C9C9C'};
+  color: ${props => props.currentPath ? "#5D9040" : "#9C9C9C"};
   
   &:hover {
-    transform: ${props => props.currentPath ? 'none' : 'scale(1.1)'};
-    cursor: ${props => props.currentPath ? 'default' : 'pointer'};
+    transform: ${props => props.currentPath ? "none" : "scale(1.1)"};
+    cursor: ${props => props.currentPath ? "default" : "pointer"};
   }
 `;
 
 const LogOutButton = styled.button`
-  color: ${props => props.currentPath ? '#5D9040' : '#9C9C9C'};
+  color: ${props => props.currentPath ? "#5D9040" : "#9C9C9C"};
   
   &:hover {
-    transform: ${props => props.currentPath ? 'none' : 'scale(1.1)'};
-    cursor: ${props => props.currentPath ? 'default' : 'pointer'};
+    transform: ${props => props.currentPath ? "none" : "scale(1.1)"};
+    cursor: ${props => props.currentPath ? "default" : "pointer"};
   }
 `;
 
 const SignInButton = styled.button`
-  color: ${props => props.currentPath ? '#5D9040' : '#9C9C9C'};
+  color: ${props => props.currentPath ? "#5D9040" : "#9C9C9C"};
   
   &:hover {
-    transform: ${props => props.currentPath ? 'none' : 'scale(1.1)'};
-    cursor: ${props => props.currentPath ? 'default' : 'pointer'};
+    transform: ${props => props.currentPath ? "none" : "scale(1.1)"};
+    cursor: ${props => props.currentPath ? "default" : "pointer"};
   }
 `;
 
 const SignUpButton = styled.button`
-  color: ${props => props.currentPath ? '#5D9040' : '#9C9C9C'};
+  color: ${props => props.currentPath ? "#5D9040" : "#9C9C9C"};
   
   &:hover {
-    transform: ${props => props.currentPath ? 'none' : 'scale(1.1)'};
-    cursor: ${props => props.currentPath ? 'default' : 'pointer'};
+    transform: ${props => props.currentPath ? "none" : "scale(1.1)"};
+    cursor: ${props => props.currentPath ? "default" : "pointer"};
   }
 `;

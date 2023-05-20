@@ -1,14 +1,13 @@
-import { useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import styled from 'styled-components';
-import Swal from 'sweetalert2';
+import { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import styled from "styled-components";
+import Swal from "sweetalert2";
 
-import { MY_LINKS_URL } from '../constants.js';
-import { UserContext } from '../context/UserContext.js';
-import Link from '../components/Link.js';
-import NewShorten from '../components/NewShorten.js';
-import Spinner from '../components/Spinner.js';
+import { UserContext } from "../context/UserContext.js";
+import Link from "../components/Link.js";
+import NewShorten from "../components/NewShorten.js";
+import Spinner from "../components/Spinner.js";
 
 export default function MyLinks() {
 
@@ -26,19 +25,19 @@ export default function MyLinks() {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(MY_LINKS_URL, config)
+    axios.get(`${process.env.REACT_APP_API_BASE_URL}/urls`, config)
       .then(res => {
         setLinks(res.data.shortenedUrls);
         setLoading(false);
       })
       .catch((err) => {
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
+          icon: "error",
+          title: "Oops...",
           text: err.response.data.message
         });
         if (err.response.status === 404) {
-          navigate('/');
+          navigate("/");
         }
         setLoading(false);
       });
@@ -48,7 +47,7 @@ export default function MyLinks() {
   if (loading) {
     return (
       <Container loading={loading}>
-        <Spinner color='#80CC74' />
+        <Spinner color="#80CC74" />
       </Container>
     );
   } else {
@@ -72,9 +71,9 @@ export default function MyLinks() {
 const Container = styled.section`
   width: 100%;
   margin-top: 80px;
-  display: ${props => props.loading ? 'flex' : 'default'};
-  justify-content: ${props => props.loading ? 'center' : 'default'};
-  align-items: ${props => props.loading ? 'center' : 'default'};
+  display: ${props => props.loading ? "flex" : "default"};
+  justify-content: ${props => props.loading ? "center" : "default"};
+  align-items: ${props => props.loading ? "center" : "default"};
 `;
 
 const Links = styled.ul`

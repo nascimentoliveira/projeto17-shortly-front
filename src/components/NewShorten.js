@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Swal from 'sweetalert2';
 
 import { UserContext } from '../context/UserContext.js';
-import { SHORTENED_LINKS_URL } from '../constants.js';
 import Spinner from '../components/Spinner.js';
 
 export default function NewShorten({ setRefresh }) {
@@ -27,7 +26,7 @@ export default function NewShorten({ setRefresh }) {
   function newShorten(e) {
     e.preventDefault();
     setLoading(true);
-    axios.post(`${SHORTENED_LINKS_URL}/shorten`, form, config)
+    axios.post(`${process.env.REACT_APP_API_BASE_URL}/urls`, form, config)
       .then(res => {
         setLoading(false);
         setRefresh(Math.random());

@@ -1,20 +1,19 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-import styled from 'styled-components';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
+import styled from "styled-components";
 
-import Spinner from '../components/Spinner.js';
-import { SIGN_UP_URL } from '../constants.js';
+import Spinner from "../components/Spinner.js";
 
 export default function SignUp() {
 
   const [formEnabled, setFormEnabled] = useState(true);
   const [form, setForm] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
   });
   const navigate = useNavigate();
 
@@ -26,27 +25,27 @@ export default function SignUp() {
   function signUp(e) {
     e.preventDefault();
     setFormEnabled(false);
-    axios.post(SIGN_UP_URL, form)
+    axios.post(`${process.env.REACT_APP_API_BASE_URL}/users`, form)
       .then((res) => {
         Swal.fire({
-          position: 'center',
-          icon: 'success',
+          position: "center",
+          icon: "success",
           title: res.data.message,
           showConfirmButton: false,
           timer: 1500
         });
-        navigate('/signin');
+        navigate("/auth");
       })
       .catch(err => {
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
+          icon: "error",
+          title: "Oops...",
           text: err.response.data.message
         });
         setForm({
           ...form,
-          password: '',
-          confirmPassword: ''
+          password: "",
+          confirmPassword: ""
         });
         setFormEnabled(true);
       });
@@ -56,9 +55,9 @@ export default function SignUp() {
     <Container>
       <Form onSubmit={signUp}>
         <Input
-          type='text'
-          placeholder='Nome'
-          name='name'
+          type="text"
+          placeholder="Nome"
+          name="name"
           value={form.name}
           onChange={handleForm}
           disabled={!formEnabled}
@@ -66,9 +65,9 @@ export default function SignUp() {
         />
 
         <Input
-          type='email'
-          placeholder='E-mail'
-          name='email'
+          type="email"
+          placeholder="E-mail"
+          name="email"
           value={form.email}
           onChange={handleForm}
           disabled={!formEnabled}
@@ -76,9 +75,9 @@ export default function SignUp() {
         />
 
         <Input
-          type='password'
-          placeholder='Senha'
-          name='password'
+          type="password"
+          placeholder="Senha"
+          name="password"
           value={form.password}
           onChange={handleForm}
           disabled={!formEnabled}
@@ -86,9 +85,9 @@ export default function SignUp() {
         />
 
         <Input
-          type='password'
-          placeholder='Confirmar senha'
-          name='confirmPassword'
+          type="password"
+          placeholder="Confirmar senha"
+          name="confirmPassword"
           value={form.confirmPassword}
           onChange={handleForm}
           disabled={!formEnabled}
@@ -96,11 +95,11 @@ export default function SignUp() {
         />
 
         <Button
-          type='submit'
-          title={formEnabled ? 'Fazer login' : 'aguarde...'}
+          type="submit"
+          title={formEnabled ? "Fazer login" : "aguarde..."}
           disabled={!formEnabled}
         >
-          {formEnabled ? 'Criar Conta' : <Spinner />}
+          {formEnabled ? "Criar Conta" : <Spinner />}
         </Button>
       </Form>
     </Container>
