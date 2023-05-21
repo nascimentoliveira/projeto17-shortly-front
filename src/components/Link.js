@@ -32,7 +32,7 @@ export default function Link({ link, setRefresh }) {
       confirmButtonText: "Sim, desejo excluir",
     })).then(result => {
       if (result.isConfirmed) {
-        axios.delete(`${process.env.REACT_APP_API_BASE_URL}/urls/${id}`, config)
+        axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/urls/${id}`, config)
           .then(res => {
             setLoading(false);
             setRefresh(Math.random());
