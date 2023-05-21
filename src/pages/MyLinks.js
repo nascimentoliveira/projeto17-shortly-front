@@ -25,7 +25,7 @@ export default function MyLinks() {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`${process.env.REACT_APP_API_BASE_URL}/urls`, config)
+    axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/urls`, config)
       .then(res => {
         setLinks(res.data.shortenedURLs);
         setLoading(false);

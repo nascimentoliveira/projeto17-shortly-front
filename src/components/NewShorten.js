@@ -26,7 +26,7 @@ export default function NewShorten({ setRefresh }) {
   function newShorten(e) {
     e.preventDefault();
     setLoading(true);
-    axios.post(`${process.env.REACT_APP_API_BASE_URL}/urls`, form, config)
+    axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/urls`, form, config)
       .then(res => {
         setLoading(false);
         setRefresh(Math.random());

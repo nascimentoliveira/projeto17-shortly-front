@@ -39,7 +39,7 @@ export default function SignUp() {
       setFormEnabled(true);
     } else {
       delete form.confirmPassword;
-      axios.post(`${process.env.REACT_APP_API_BASE_URL}/users`, form)
+      axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/users`, form)
         .then((res) => {
           Swal.fire({
             position: "center",

@@ -21,7 +21,7 @@ export default function Ranking() {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`${process.env.REACT_APP_API_BASE_URL}/ranking`, token ? config : null)
+    axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/ranking`, token ? config : null)
       .then(res => {
         setRanking(res.data);
         setLoading(false);

@@ -22,7 +22,7 @@ export default function SignIn() {
   function signIn(e) {
     e.preventDefault();
     setFormEnabled(false);
-    axios.post(`${process.env.REACT_APP_API_BASE_URL}/auth`, form)
+    axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/auth`, form)
       .then(res => {
         setUser(res.data.name);
         setToken(res.data.token);
