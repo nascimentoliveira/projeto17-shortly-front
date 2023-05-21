@@ -48,7 +48,7 @@ export default function Link({ link, setRefresh }) {
             Swal.fire({
               icon: "error",
               title: "Oops...",
-              text: err.response.data.message
+              text: err.response.data.error
             });
             setLoading(false);
           });
@@ -84,18 +84,18 @@ export default function Link({ link, setRefresh }) {
 
   return (
     <Container>
-      <Item title={link.url}>
-        <p>{link.url}</p>
+      <Item title={link.bigURL}>
+        <p>{link.bigURL}</p>
         <GoLinkExternal
           title={"Ir para este endereço"}
-          onClick={() => redirect(link.url)}
+          onClick={() => redirect(link.bigURL)}
         />
       </Item>
       <Item>
-        <p>{link.shortUrl}
+        <p>{link.shortURL}
           <MdCopyAll
             title={"Copiar link encurtado"}
-            onClick={() => copyLink(link.shortUrl)}
+            onClick={() => copyLink(link.shortURL)}
           />
         </p>
       </Item>

@@ -9,7 +9,7 @@ import Spinner from '../components/Spinner.js';
 export default function NewShorten({ setRefresh }) {
 
   const { token } = useContext(UserContext);
-  const [form, setForm] = useState({ url: '' });
+  const [form, setForm] = useState({ bigURL: '' });
   const [loading, setLoading] = useState(false);
 
   const config = {
@@ -30,7 +30,7 @@ export default function NewShorten({ setRefresh }) {
       .then(res => {
         setLoading(false);
         setRefresh(Math.random());
-        setForm({ url: '' });
+        setForm({ bigURL: '' });
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -43,10 +43,10 @@ export default function NewShorten({ setRefresh }) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: err.response.data.message
+          text: err.response.data.error
         });
         setLoading(false);
-        setForm({ url: '' });
+        setForm({ bigURL: '' });
       });
   }
   return (
@@ -55,8 +55,8 @@ export default function NewShorten({ setRefresh }) {
         <Input
           type='url'
           placeholder='Links que cabem no bolso'
-          name='url'
-          value={form.url}
+          name='bigURL'
+          value={form.bigURL}
           onChange={handleForm}
           disabled={loading}
           required

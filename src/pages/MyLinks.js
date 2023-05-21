@@ -27,14 +27,14 @@ export default function MyLinks() {
     setLoading(true);
     axios.get(`${process.env.REACT_APP_API_BASE_URL}/urls`, config)
       .then(res => {
-        setLinks(res.data.shortenedUrls);
+        setLinks(res.data.shortenedURLs);
         setLoading(false);
       })
       .catch((err) => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: err.response.data.message
+          text: err.response.data.error
         });
         if (err.response.status === 404) {
           navigate("/");
@@ -42,7 +42,6 @@ export default function MyLinks() {
         setLoading(false);
       });
   }, [refresh]);
-
 
   if (loading) {
     return (

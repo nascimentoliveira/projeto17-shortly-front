@@ -32,7 +32,7 @@ export default function SignIn() {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: err.response.data.message
+          text: err.response.data.error
         });
         setForm({
           ...form,

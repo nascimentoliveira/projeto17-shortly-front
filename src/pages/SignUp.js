@@ -25,30 +25,45 @@ export default function SignUp() {
   function signUp(e) {
     e.preventDefault();
     setFormEnabled(false);
-    axios.post(`${process.env.REACT_APP_API_BASE_URL}/users`, form)
-      .then((res) => {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: res.data.message,
-          showConfirmButton: false,
-          timer: 1500
-        });
-        navigate("/auth");
-      })
-      .catch(err => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: err.response.data.message
-        });
-        setForm({
-          ...form,
-          password: "",
-          confirmPassword: ""
-        });
-        setFormEnabled(true);
+    if (form.password !== form.confirmPassword) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "As senhas devem ser iguais!"
       });
+      setForm({
+        ...form,
+        password: "",
+        confirmPassword: ""
+      });
+      setFormEnabled(true);
+    } else {
+      delete form.confirmPassword;
+      axios.post(`${process.env.REACT_APP_API_BASE_URL}/users`, form)
+        .then((res) => {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: res.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          });
+          navigate("/auth");
+        })
+        .catch(err => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: err.response.data.error
+          });
+          setForm({
+            ...form,
+            password: "",
+            confirmPassword: ""
+          });
+          setFormEnabled(true);
+        });
+    }
   }
 
   return (
